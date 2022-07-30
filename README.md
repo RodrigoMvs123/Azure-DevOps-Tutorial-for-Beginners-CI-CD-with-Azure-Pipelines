@@ -2,7 +2,7 @@
 
 https://raw.githubusercontent.com/RodrigoMvs123/Azure-DevOps-Tutorial-for-Beginners-CI-CD-with-Azure-Pipelines/main/README.md
 
-
+https://github.com/RodrigoMvs123/Azure-DevOps-Tutorial-for-Beginners-CI-CD-with-Azure-Pipelines/blame/main/README.md
 
 
 
