@@ -1,5 +1,9 @@
 # Azure-DevOps-Tutorial-for-Beginners-CI-CD-with-Azure-Pipelines
 
+https://raw.githubusercontent.com/RodrigoMvs123/Azure-DevOps-Tutorial-for-Beginners-CI-CD-with-Azure-Pipelines/main/README.md
+
+
+
 
 
 https://azure.microsoft.com/pt-br/free/search/?&ef_id=Cj0KCQjwio6XBhCMARIsAC0u9aG6JTCzpv2tLXcDUshIsFoS_uyIKp6g0wo0b9AD7_f6LxGyzTm-A6oaAmQYEALw_wcB:G:s&OCID=AIDcmmzmnb0182_SEM_Cj0KCQjwio6XBhCMARIsAC0u9aG6JTCzpv2tLXcDUshIsFoS_uyIKp6g0wo0b9AD7_f6LxGyzTm-A6oaAmQYEALw_wcB:G:s&gclid=Cj0KCQjwio6XBhCMARIsAC0u9aG6JTCzpv2tLXcDUshIsFoS_uyIKp6g0wo0b9AD7_f6LxGyzTm-A6oaAmQYEALw_wcB
