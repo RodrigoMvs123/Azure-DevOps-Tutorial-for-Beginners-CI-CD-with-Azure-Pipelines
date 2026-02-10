@@ -1,63 +1,71 @@
 # Azure-DevOps-Tutorial-for-Beginners-CI-CD-with-Azure-Pipelines
 
-https://raw.githubusercontent.com/RodrigoMvs123/Azure-DevOps-Tutorial-for-Beginners-CI-CD-with-Azure-Pipelines/main/README.md
+- https://raw.githubusercontent.com/RodrigoMvs123/Azure-DevOps-Tutorial-for-Beginners-CI-CD-with-Azure-Pipelines/main/README.md
+- https://github.com/RodrigoMvs123/Azure-DevOps-Tutorial-for-Beginners-CI-CD-with-Azure-Pipelines/blame/main/README.md
+- https://azure.microsoft.com/pt-br/free/search/?&ef_id=Cj0KCQjwio6XBhCMARIsAC0u9aG6JTCzpv2tLXcDUshIsFoS_uyIKp6g0wo0b9AD7_f6LxGyzTm-A6oaAmQYEALw_wcB:G:s&OCID=AIDcmmzmnb0182_SEM_Cj0KCQjwio6XBhCMARIsAC0u9aG6JTCzpv2tLXcDUshIsFoS_uyIKp6g0wo0b9AD7_f6LxGyzTm-A6oaAmQYEALw_wcB:G:s&gclid=Cj0KCQjwio6XBhCMARIsAC0u9aG6JTCzpv2tLXcDUshIsFoS_uyIKp6g0wo0b9AD7_f6LxGyzTm-A6oaAmQYEALw_wcB
 
-https://github.com/RodrigoMvs123/Azure-DevOps-Tutorial-for-Beginners-CI-CD-with-Azure-Pipelines/blame/main/README.md
+## Azure Boards
 
+## Azure Repositories
 
-
-https://azure.microsoft.com/pt-br/free/search/?&ef_id=Cj0KCQjwio6XBhCMARIsAC0u9aG6JTCzpv2tLXcDUshIsFoS_uyIKp6g0wo0b9AD7_f6LxGyzTm-A6oaAmQYEALw_wcB:G:s&OCID=AIDcmmzmnb0182_SEM_Cj0KCQjwio6XBhCMARIsAC0u9aG6JTCzpv2tLXcDUshIsFoS_uyIKp6g0wo0b9AD7_f6LxGyzTm-A6oaAmQYEALw_wcB:G:s&gclid=Cj0KCQjwio6XBhCMARIsAC0u9aG6JTCzpv2tLXcDUshIsFoS_uyIKp6g0wo0b9AD7_f6LxGyzTm-A6oaAmQYEALw_wcB
-
-Azure Boards 
-
-Azure Repositories 
 Host your Code
-GitHub 
-GitLab
-Based on Git
-BitBucket 
 
-Azure Repos
+**GitHub**
+
+**GitLab**
+
+Based on Git
+
+**BitBucket**
+
+**Azure Repos**
+
 Devops Collaborate
-Create Branch 
-Pull Request 
+
+Create Branch
+
+Pull Request
+
 They collaborate until the main Branch
+
 So they need to be Released
-Plan > Code > Test > Package > Single Artifact > Deploy 
-Continuous Integration ( CI ) Test / Package 
+
+Plan > Code > Test > Package > Single Artifact > Deploy
+
+Continuous Integration ( CI ) Test / Package
 
 Pipeline
-Azure-pipelines.yml
 
+**Azure-pipelines.yml**
+```yaml
 Trigger:
 master
 Pool:
-vmImage : ‘ubunto-22.04’
-
+vmImage : 'ubunto-22.04'
 variables: 
-buildConfiguration: ‘Release’
-
+buildConfiguration: 'Release'
 steps: 
 script: dotnet test
 displayName: Run until tests 
-
 script: dotnet build - - configuration $(buildConfiguration)
            displayName: build application
-
 script: docker build -t my-image:v1.0.
 displayName: build image
 script: docker push my-image:v1.0.
 displayName: Push image 
+```
 
 Task
+
 pipeline yml editor
 
 Agent
 
+```yaml
 jobs: 
 job: Run on Windows
 pool:
-           vmImage: ‘windows-latest’
+           vmImage: 'windows-latest'
 steps:
 script: dotnet test
 displayName: Run unit tests
@@ -65,37 +73,39 @@ displayName: Run unit tests
 jobs: 
 job: Run on Linux
 pool:
-           vmImage: ‘ubuntu-latest’
+           vmImage: 'ubuntu-latest'
 steps:
 script: dotnet test
 displayName: Run unit tests
+```
 
+## Azure Artifact
 
+Source Code > Artifact ( Jar, Nuget , mpm … )
 
-
-Azure Artifact 
-Source Code > Artifact ( Jar, Nuget , mpm … ) 
-Docker Images 
+Docker Images
 
 Azure Pipelines (Build)
-Test > Build artifact > Push to container repository > ( Azure Container Registry, Amazon ECR ) > Deploy ( Continuous Deployment CD ) 
 
-Build and Deploy 
+Test > Build artifact > Push to container repository > ( Azure Container Registry, Amazon ECR ) > Deploy ( Continuous Deployment CD )
 
+Build and Deploy
+
+```yaml
 job:
 job:Build and test 
 steps:
 task:DotNetCoreCLI@2
             inputs:
-             command: ‘test’ 
+             command: 'test' 
 task:DotNetCoreCLI@2
 inputs: 
-command: ‘build’
-arguments: ‘- configuration $(buildConfiguration)’
+command: 'build'
+arguments: '- configuration $(buildConfiguration)'
 task: Docker@2
 inputs: 
-command: ‘buildAndPush’
- Dockerfile: ‘* * / Dockerfile’ age:v1.0 .
+command: 'buildAndPush'
+ Dockerfile: '* * / Dockerfile' age:v1.0 .
 displayName: push image 
 jobs:
 job: Deploy to dev
@@ -103,9 +113,12 @@ job: Deploy to dev
 task: AzureWebApp@1
              inputs: 
              appName: myapp
-             package: ‘$(System.DefaultWorkingDirectory)/* * / * .zip’
+             package: '$(System.DefaultWorkingDirectory)/* * / * .zip'
+```
 
-Stages: 
+Stages:
+
+```yaml
 -stage: Build
 jobs:
 job: Test and Build 
@@ -116,47 +129,64 @@ task: DotNetCoreCLI@2
 …
 task: Docker@2
 …
-
 -stage: Deploy
           jobs:
 job: Deploy to development
 steps:
 task: AzureWebApp@1
 …
+```
 
-Release PipeLines 
-Test > Build Image > Push to repository > 
-Continuous Integration ( CI ) 
+## Release PipeLines
+
+Test > Build Image > Push to repository >
+
+Continuous Integration ( CI )
 
 Deploy to Dev > Deploy to Testing > Deploy to PROD
-Continuous Delivery ( CD ) 
 
-Test Plans
+Continuous Delivery ( CD )
+
+## Test Plans
+
 Automated Tests
-Manual Tests 
-Exploratory Tests 
-User Acceptance Tests 
 
-Azure DevOps Architecture 
+Manual Tests
+
+Exploratory Tests
+
+User Acceptance Tests
+
+## Azure DevOps Architecture
+
 Running tests…
+
 Building images
+
 Deploy to dev
 
-Software as a service from Microsoft 
-Main part: Configurations, Pipelines, Repos created and stored // agents 
+Software as a service from Microsoft
+
+Main part: Configurations, Pipelines, Repos created and stored // agents
+
 Microsoft hosted agents
 
-Pricing // Free 
-Plan > Code > Test > Package > Deploy 
+Pricing // Free
 
-Push Docker Image to Container Repository 
+Plan > Code > Test > Package > Deploy
 
-Deploy to Remote Server 
+Push Docker Image to Container Repository
+
+Deploy to Remote Server
+
 Microsoft Azure, Aws, Google Cloud, Kubernetes Cluster
 
-Project Hosted on External Code Repository 
+Project Hosted on External Code Repository
 
 Feature Branch
-Pull Request 
-Build Pipeline 
-Deployment 
+
+Pull Request
+
+Build Pipeline
+
+Deployment
